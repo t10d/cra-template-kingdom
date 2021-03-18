@@ -1,0 +1,31 @@
+{
+  "name": "cra-template-kingdom",
+  "version": "0.0.1",
+  "keywords": [
+    "react",
+    "create-react-app",
+    "template",
+    "typescript",
+    "chakra-ui",
+    "emotion",
+    "kingdom",
+    "t10"
+  ],
+  "description": "The Kingdom template for Create React App.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/t10d/cra-template-kingdom.git",
+    "directory": "cra-template-kingdom"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=10"
+  },
+  "bugs": {
+    "url": "https://github.com/t10d/cra-template-kingdom/issues"
+  },
+  "files": [
+    "template",
+    "template.json"
+  ]
+}
