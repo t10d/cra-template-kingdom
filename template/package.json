@@ -55,11 +55,6 @@
     "lint-staged": ">=10",
     "prettier": "2.2.1"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "lint-staged": {
     "./src/**/*.ts?(x)": [
       "yarn lint"
