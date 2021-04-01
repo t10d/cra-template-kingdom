@@ -1,15 +1,14 @@
-import React from 'react';
+import * as React from 'react';
 import cache from '../utils/cache';
+
+type AuthParams = {
+  token: string;
+  persist?: boolean;
+};
 
 type AuthContextData = {
   isAuthenticated: boolean;
-  authenticate: ({
-    token,
-    persist,
-  }: {
-    token: string;
-    persist?: boolean;
-  }) => void;
+  authenticate: ({ token, persist }: AuthParams) => void;
   logout: () => void;
 };
 
@@ -25,13 +24,7 @@ export function AuthProvider({ children }: ProviderProps) {
   const { setCache } = cache;
   const [isAuthenticated, setIsAuthenticated] = React.useState(false);
 
-  function authenticate({
-    token,
-    persist,
-  }: {
-    token: string;
-    persist?: boolean;
-  }) {
+  function authenticate({ token, persist }: AuthParams) {
     setCache(token);
     setIsAuthenticated(true);
     if (persist) {
@@ -52,11 +45,11 @@ export function AuthProvider({ children }: ProviderProps) {
   );
 }
 
-export function useAuthContext(): AuthContextData {
+export function useAuth(): AuthContextData {
   const context = React.useContext(AuthContext);
 
   if (!context) {
-    throw new Error('useAuthContext must be within its context');
+    throw new Error('useAuth must be within its context');
   }
   return context;
 }

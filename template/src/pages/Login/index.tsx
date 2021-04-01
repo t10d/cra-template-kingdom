@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { useAuthContext } from '../../context/AuthContext';
+import { useAuth } from '../../context/AuthContext';
 
 function Login() {
-  const { authenticate } = useAuthContext();
+  const { authenticate } = useAuth();
 
   return (
     <div>
