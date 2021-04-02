@@ -1,3 +1,5 @@
+type token = string;
+
 function createCache<T>(initialValue: T) {
   let cache = initialValue ?? undefined;
 
@@ -10,8 +12,8 @@ function createCache<T>(initialValue: T) {
   return { getCache, setCache };
 }
 
-type token = string;
+const localToken = localStorage.getItem('token');
 
-const cache = createCache<token>('');
+const cache = createCache<token>(localToken ?? '');
 
 export default cache;

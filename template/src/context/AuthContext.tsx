@@ -16,13 +16,19 @@ type ProviderProps = {
   children: React.ReactNode;
 };
 
-export const AuthContext = React.createContext<AuthContextData>(
-  {} as AuthContextData
-);
+export const AuthContext = React.createContext<AuthContextData>({
+  isAuthenticated: false,
+  authenticate: () => {},
+  logout: () => {},
+});
+
+AuthContext.displayName = 'AuthContext';
 
 export function AuthProvider({ children }: ProviderProps) {
-  const { setCache } = cache;
-  const [isAuthenticated, setIsAuthenticated] = React.useState(false);
+  const { getCache, setCache } = cache;
+  const [isAuthenticated, setIsAuthenticated] = React.useState(
+    () => Boolean(getCache()?.length) ?? false
+  );
 
   function authenticate({ token, persist }: AuthParams) {
     setCache(token);

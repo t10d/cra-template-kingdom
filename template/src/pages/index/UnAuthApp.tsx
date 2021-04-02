@@ -1,13 +1,11 @@
 import * as React from 'react';
 import { Redirect, Switch, Route } from 'react-router-dom';
-import routes from '../../routes/unAuthRoutes';
+import Login from '../Login';
 
 function UnAuthApp() {
   return (
     <Switch>
-      {routes.map((r) => (
-        <Route {...r} key={r?.path as string} />
-      ))}
+      <Route path="/login" component={Login} exact />
       <Route>
         <Redirect to="/login" />
       </Route>
