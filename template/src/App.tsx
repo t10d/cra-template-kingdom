@@ -1,25 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Flex, VStack } from '@chakra-ui/layout';
+import { Spinner } from '@chakra-ui/spinner';
+import * as React from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { useAuth } from './context/AuthContext';
+
+const UnAuthenticatedApp = React.lazy(() => import('./pages/index/UnAuthApp'));
+
+const AuthenticatedApp = React.lazy(() => import('./pages/index/AuthApp'));
 
 function App() {
+  const { isAuthenticated } = useAuth();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <React.Suspense fallback={<PageSpinner />}>
+        {isAuthenticated ? <AuthenticatedApp /> : <UnAuthenticatedApp />}
+      </React.Suspense>
+    </Router>
+  );
+}
+
+function PageSpinner() {
+  return (
+    <Flex justify="center" align="center" minH="100vh">
+      <VStack spacing={6}>
+        <Spinner size="xl" />
+      </VStack>
+    </Flex>
   );
 }
 
