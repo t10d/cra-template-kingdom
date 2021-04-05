@@ -1,14 +1,12 @@
 import * as React from 'react';
-import cache from '../utils/cache';
 
 type AuthParams = {
   token: string;
-  persist?: boolean;
 };
 
 type AuthContextData = {
   isAuthenticated: boolean;
-  authenticate: ({ token, persist }: AuthParams) => void;
+  authenticate: ({ token }: AuthParams) => void;
   logout: () => void;
 };
 
@@ -25,21 +23,17 @@ export const AuthContext = React.createContext<AuthContextData>({
 AuthContext.displayName = 'AuthContext';
 
 export function AuthProvider({ children }: ProviderProps) {
-  const { getCache, setCache } = cache;
+  const localToken = localStorage.getItem('token');
   const [isAuthenticated, setIsAuthenticated] = React.useState(
-    () => Boolean(getCache()?.length) ?? false
+    () => Boolean(localToken?.length) ?? false
   );
 
-  function authenticate({ token, persist }: AuthParams) {
-    setCache(token);
+  function authenticate({ token }: AuthParams) {
     setIsAuthenticated(true);
-    if (persist) {
-      localStorage.setItem('token', token);
-    }
+    localStorage.setItem('token', token);
   }
 
   function logout() {
-    setCache(undefined);
     setIsAuthenticated(false);
     localStorage.removeItem('token');
   }
