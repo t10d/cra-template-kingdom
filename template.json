@@ -31,6 +31,19 @@
       "eslint-plugin-react": "^7.22.0",
       "eslint-plugin-react-hooks": "^4.2.0",
       "prettier": "2.2.1"
+    },
+    "jest": {
+      "resetMocks": false,
+      "testMatch": ["**/__tests__/**/*.test.[jt]s?(x)"],
+      "collectCoverageFrom": [
+        "src/**/*.{ts,tsx}",
+        "!src/**/__tests__/*.{ts,tsx}",
+        "!src/apollo/*.ts",
+        "!src/__mocks__/*.ts",
+        "!src/utils/*.{js,ts}",
+        "!src/**/*.stories.tsx",
+        "!src/**/*.d.ts"
+      ]
     }
   }
 }
