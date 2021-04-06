@@ -5,7 +5,7 @@ function Login() {
   const { authenticate } = useAuth();
 
   return (
-    <div>
+    <div data-testid="login">
       <button onClick={() => authenticate({ token: 'bora' })}>
         set to true
       </button>
