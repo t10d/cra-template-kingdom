@@ -20,7 +20,11 @@ export function makeServer({ environment = 'test' } = {}) {
       });
 
       this.get('/users/:id', (schema, request) => {
-        return schema.users.find(id);
+        const user = schema.users.find(id);
+        if (user) {
+          return user;
+        }
+        return new Response(404, { errors: ['User not found.'] });
       });
 
       this.patch('/users/:id', (schema, request) => {
