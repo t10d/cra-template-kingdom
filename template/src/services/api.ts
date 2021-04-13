@@ -8,7 +8,7 @@ api.defaults.timeout = 30000;
 
 api.interceptors.request.use(
   async (config) => {
-    const token = sessionStorage.getItem('token');
+    const token = localStorage.getItem('token');
     if (token) {
       config.headers.Authorization = token;
     }
