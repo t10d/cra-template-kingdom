@@ -20,6 +20,7 @@ export function makeServer({ environment = 'test' } = {}) {
       });
 
       this.get('/users/:id', (schema, request) => {
+        const id = request.params.id;
         const user = schema.users.find(id);
         if (user) {
           return user;
