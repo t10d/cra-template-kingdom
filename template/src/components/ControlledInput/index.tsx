@@ -15,7 +15,7 @@ interface ControlledInputProps extends InputProps {
   icon?: React.ReactNode;
   errorMessage?: string;
   children?: React.ReactNode;
-  register: UseFormRegisterReturn;
+  register?: UseFormRegisterReturn;
 }
 
 export default function ControlledInput(props: ControlledInputProps) {
