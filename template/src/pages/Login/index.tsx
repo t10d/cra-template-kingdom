@@ -130,7 +130,7 @@ export default function Login() {
             color="white"
             _hover={{ backgroundColor: '#276749' }}
           >
-            Entrar
+            Login
           </Button>
           {errorSubmitMessage.length > 0 && (
             <Box mt="3" textAlign="center">
