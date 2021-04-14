@@ -22,6 +22,11 @@
       "extends": ["react-app", "react-app/jest"]
     },
     "devDependencies": {
+      "@storybook/addon-actions": "^6.2.7",
+      "@storybook/addon-essentials": "^6.2.7",
+      "@storybook/addon-links": "^6.2.7",
+      "@storybook/preset-create-react-app": "^3.1.7",
+      "@storybook/react": "^6.2.7",
       "eslint": "^7.22.0",
       "eslint-config-prettier": "^8.1.0",
       "eslint-plugin-cypress": "^2.11.2",
