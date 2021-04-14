@@ -18,8 +18,11 @@
       "react-hook-form": "^7.0.3",
       "axios": "^0.21.1"
     },
-    "eslintConfig": {
-      "extends": ["react-app", "react-app/jest"]
+    "scripts": {
+      "test:coverage": "yarn test -- --coverage",
+      "lint": "eslint \"./**/*.{js,ts,tsx}\" --max-warnings=0 --fix",
+      "storybook": "start-storybook -p 6006 -s public",
+      "build-storybook": "build-storybook -s public"
     },
     "devDependencies": {
       "@storybook/addon-actions": "^6.2.7",
@@ -46,9 +49,9 @@
       "collectCoverageFrom": [
         "src/**/*.{ts,tsx}",
         "!src/**/__tests__/*.{ts,tsx}",
-        "!src/apollo/*.ts",
+        "!src/api/**/*.ts",
         "!src/__mocks__/*.ts",
-        "!src/utils/*.{js,ts}",
+        "!src/utils/*.{js,ts,tsx}",
         "!src/**/*.stories.tsx",
         "!src/**/*.d.ts"
       ]
