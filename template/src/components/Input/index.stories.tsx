@@ -1,18 +1,18 @@
 import * as React from 'react';
 import { Story, Meta } from '@storybook/react';
-import ControlledInput from './index';
+import Input from './index';
 
 export default {
   title: 'Input',
-  component: ControlledInput,
+  component: Input,
 } as Meta;
 
-const Template: Story<React.ComponentProps<typeof ControlledInput>> = (
-  args
-) => <ControlledInput {...args} />;
+const Template: Story<React.ComponentProps<typeof Input>> = (args) => (
+  <Input {...args} />
+);
 
-export const Input = Template.bind({});
-Input.args = {
+export const InputValid = Template.bind({});
+InputValid.args = {
   label: 'My Input Label',
   icon: <p>Icon</p>,
 };

@@ -2,23 +2,23 @@ import * as React from 'react';
 import {
   InputGroup,
   InputRightElement,
-  Input,
-  InputProps,
+  Input as ChakraInput,
+  InputProps as ChakraInputProps,
   FormLabel,
   FormControl,
   FormErrorMessage,
 } from '@chakra-ui/react';
 import { UseFormRegisterReturn } from 'react-hook-form';
 
-interface ControlledInputProps extends InputProps {
+type InputProps = ChakraInputProps & {
   label: string;
   icon?: React.ReactNode;
   errorMessage?: string;
   children?: React.ReactNode;
   register?: UseFormRegisterReturn;
-}
+};
 
-export default function ControlledInput(props: ControlledInputProps) {
+export default function Input(props: InputProps) {
   const {
     label,
     icon,
@@ -32,12 +32,12 @@ export default function ControlledInput(props: ControlledInputProps) {
     <FormControl isInvalid={!!errorMessage}>
       <InputGroup flexDirection="column">
         <FormLabel>{label}</FormLabel>
-        <Input {...register} {...remainingProps}></Input>
-        {icon && (
+        <ChakraInput {...register} {...remainingProps} />
+        {icon ? (
           <InputRightElement top={[8, '2rem']} right={2}>
             {icon}
           </InputRightElement>
-        )}
+        ) : null}
         {children}
       </InputGroup>
       <FormErrorMessage color="red.500">{errorMessage}</FormErrorMessage>

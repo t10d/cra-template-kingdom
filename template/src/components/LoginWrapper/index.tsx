@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Flex, Heading, Link, Text } from '@chakra-ui/layout';
 
-interface LoginWrapperProps {
+type LoginWrapperProps = {
   children: React.ReactNode;
-}
+};
 
 export default function LoginWrapper({ children }: LoginWrapperProps) {
   return (

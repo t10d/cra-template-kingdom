@@ -12,7 +12,7 @@ import {
 } from '@chakra-ui/react';
 import axios, { AxiosError, AxiosResponse } from 'axios';
 import { useForm } from 'react-hook-form';
-import ControlledInput from '../../components/ControlledInput/index';
+import Input from '../../components/Input/index';
 import LoginWrapper from '../../components/LoginWrapper/index';
 import { useAuth } from '../../context/AuthContext';
 import { EMAIL_REGEX } from '../../utils/constants';
@@ -37,7 +37,7 @@ export default function Login() {
   const submitAction = ({ email, password }: FormInputs) => {
     axios
       .post('/api/login', { username: email, password })
-      .then(({ data: { token } }: AxiosResponse<any>) => {
+      .then(({ data: { token } }: AxiosResponse<{ token: string }>) => {
         authenticate({ token });
       })
       .catch((error: AxiosError) => {
@@ -69,7 +69,7 @@ export default function Login() {
         </Center>
         <form data-testid="login-form" onSubmit={handleSubmit(submitAction)}>
           <Box mt="10">
-            <ControlledInput
+            <Input
               aria-label="email"
               focusBorderColor="green.600"
               errorBorderColor="red.500"
@@ -85,7 +85,7 @@ export default function Login() {
             />
           </Box>
           <Box mt="10">
-            <ControlledInput
+            <Input
               type={isPasswordVisible ? 'text' : 'password'}
               aria-label="password"
               label="Password"
@@ -132,13 +132,13 @@ export default function Login() {
           >
             Login
           </Button>
-          {errorSubmitMessage.length > 0 && (
+          {errorSubmitMessage.length > 0 ? (
             <Box mt="3" textAlign="center">
               <Text color="red.500" fontWeight="semibold">
                 {errorSubmitMessage}
               </Text>
             </Box>
-          )}
+          ) : null}
         </form>
       </Flex>
     </LoginWrapper>
