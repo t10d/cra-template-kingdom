@@ -8,7 +8,7 @@ export function makeServer({ environment = 'test' } = {}) {
     },
     seeds(server) {
       server.create('user', {
-        username: 't10',
+        username: 'user@t10.digital',
         password: '12345678',
       });
     },
@@ -20,6 +20,7 @@ export function makeServer({ environment = 'test' } = {}) {
       });
 
       this.get('/users/:id', (schema, request) => {
+        const id = request.params.id;
         const user = schema.users.find(id);
         if (user) {
           return user;
