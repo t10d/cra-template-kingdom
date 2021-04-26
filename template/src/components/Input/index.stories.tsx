@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Story, Meta } from '@storybook/react';
 import Input from './index';
+import { Box, Flex } from '@chakra-ui/layout';
 
 export default {
   title: 'Input',
@@ -8,7 +9,11 @@ export default {
 } as Meta;
 
 const Template: Story<React.ComponentProps<typeof Input>> = (args) => (
-  <Input {...args} />
+  <Flex w="100vw" h="100vh" alignItems="center" justifyContent="center">
+    <Box w={300}>
+      <Input {...args} />
+    </Box>
+  </Flex>
 );
 
 export const InputValid = Template.bind({});

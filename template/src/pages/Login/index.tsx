@@ -2,7 +2,6 @@ import * as React from 'react';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import {
   Box,
-  Button,
   Center,
   Checkbox,
   Flex,
@@ -16,6 +15,7 @@ import Input from '../../components/Input/index';
 import LoginWrapper from '../../components/LoginWrapper/index';
 import { useAuth } from '../../context/AuthContext';
 import { EMAIL_REGEX } from '../../utils/constants';
+import Button from '../../components/Button';
 
 type FormInputs = {
   email: string;
@@ -120,6 +120,7 @@ export default function Login() {
             </Link>
           </Flex>
           <Button
+            text="Login"
             data-testid="submit-login"
             disabled={!isValid}
             isLoading={isSubmitting}
@@ -129,9 +130,7 @@ export default function Login() {
             backgroundColor="green.500"
             color="white"
             _hover={{ backgroundColor: '#276749' }}
-          >
-            Login
-          </Button>
+          />
           {errorSubmitMessage.length > 0 ? (
             <Box mt="3" textAlign="center">
               <Text color="red.500" fontWeight="semibold">
