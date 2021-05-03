@@ -50,7 +50,7 @@ When it comes to theming we choose going with [Chakra-UI](https://chakra-ui.com/
 
 In order to handle Authorization we split the App in two.
 
-**AuthorizedApp**: Where we maintain every authorized route
-**UnAuthorizedApp**: Where we maintain every unauthorized route
+- **AuthorizedApp**: Where we maintain every authorized route
+- **UnAuthorizedApp**: Where we maintain every unauthorized route
 
 We're leveraging code-splitting to only load the App that our user currently is.
