@@ -5,7 +5,7 @@ function User() {
   const { logout } = useAuth();
   return (
     <div data-testid="user">
-      <button onClick={() => logout()}>set to false</button>
+      <button onClick={() => logout()}>Log out</button>
     </div>
   );
 }
