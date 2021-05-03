@@ -1,6 +1,6 @@
 import userEvent from '@testing-library/user-event';
 import Login from '../index';
-import { act, renderWithRouter, screen, waitFor } from '../../../utils/test';
+import { renderWithRouter, screen, waitFor } from '../../../utils/test';
 import { makeServer } from '../../../server';
 
 let server: any;
