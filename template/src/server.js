@@ -15,7 +15,7 @@ export function makeServer({ environment = 'test' } = {}) {
     routes() {
       this.namespace = 'api';
 
-      this.get('/users', (schema, request) => {
+      this.get('/users', (schema) => {
         return schema.users.all();
       });
 
@@ -53,14 +53,23 @@ export function makeServer({ environment = 'test' } = {}) {
         });
       });
 
+      this.post('/forgot-password', (schema, request) => {
+        const { email } = JSON.parse(request.requestBody);
+        const user = schema.users.where((item) => item.username === email);
+        if (user.models.length) {
+          return { msg: 'Email sent.' };
+        }
+        return new Response(404, { errors: ['User not found.'] });
+      });
+
       this.post('/reset-password/:username', (schema, request) => {
         const user = schema.users.where(
           (item) => item.username === request.params.username
         );
-        if (user) {
-          const newPass = Math.random().toString(36).substring(2, 15);
-          user.update({ password: newPass });
-          return new Response(200, { data: 'Password updated.' });
+        if (user.models.length) {
+          const { password } = request.requestBody;
+          user.update({ password });
+          return { msg: 'Password updated.' };
         }
         return new Response(404, { errors: ['User not found.'] });
       });

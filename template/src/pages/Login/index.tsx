@@ -84,7 +84,7 @@ export default function Login() {
               })}
             />
           </Box>
-          <Box mt="10">
+          <Box mt="5">
             <Input
               type={isPasswordVisible ? 'text' : 'password'}
               aria-label="password"
@@ -115,7 +115,7 @@ export default function Login() {
           </Box>
           <Flex mt="2" mb="10" justifyContent="space-between">
             <Checkbox colorScheme="green">Remember me</Checkbox>
-            <Link href="" color="green.500">
+            <Link href="/forgot-password" color="green.500">
               Forgot my password
             </Link>
           </Flex>
