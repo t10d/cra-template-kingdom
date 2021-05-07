@@ -1,10 +1,10 @@
 import { createServer, Model, Response } from 'miragejs';
 
 export function makeServer({ environment = 'test' } = {}) {
-  let server = createServer({
+  return createServer({
     environment,
     models: {
-      users: Model,
+      user: Model,
     },
     seeds(server) {
       server.create('user', {
@@ -39,7 +39,7 @@ export function makeServer({ environment = 'test' } = {}) {
       });
 
       this.post('/login', (schema, request) => {
-        let reqData = JSON.parse(request.requestBody);
+        const reqData = JSON.parse(request.requestBody);
         const user = schema.users.where(
           (item) =>
             item.username === reqData.username &&
@@ -75,5 +75,4 @@ export function makeServer({ environment = 'test' } = {}) {
       });
     },
   });
-  return server;
 }
