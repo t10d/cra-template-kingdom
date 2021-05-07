@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Story, Meta } from '@storybook/react';
 import Select from './Select';
-import { Box, Flex } from '@chakra-ui/layout';
+import { Box, Flex } from '@chakra-ui/react';
 import { ArrowDownIcon } from '@chakra-ui/icons';
 
 export default {

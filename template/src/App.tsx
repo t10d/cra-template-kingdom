@@ -1,6 +1,5 @@
-import { Flex, VStack } from '@chakra-ui/layout';
-import { Spinner } from '@chakra-ui/spinner';
 import * as React from 'react';
+import { Flex, VStack, Spinner } from '@chakra-ui/react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { useAuth } from './contexts/AuthContext';
 
