@@ -1,14 +1,12 @@
 import * as React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import routes from '../../routes/authRoutes';
+import User from '../user/User';
 import NotFoundPage from '../NotFoundPage';
 
 function AuthenticatedApp() {
   return (
     <Switch>
-      {routes.map((r) => (
-        <Route {...r} key={r?.path as string} />
-      ))}
+      <Route path="/user" component={User} />
       <Route
         render={({ location: { pathname } }) =>
           pathname === '/' || pathname === '/login' ? (
