@@ -4,16 +4,20 @@ import * as React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { useAuth } from './contexts/AuthContext';
 
-const UnAuthenticatedApp = React.lazy(() => import('./pages/index/UnAuthApp'));
+const UnauthenticatedApp = React.lazy(
+  () => import('./pages/index/UnauthenticatedApp')
+);
 
-const AuthenticatedApp = React.lazy(() => import('./pages/index/AuthApp'));
+const AuthenticatedApp = React.lazy(
+  () => import('./pages/index/AuthenticatedApp')
+);
 
 function App() {
   const { isAuthenticated } = useAuth();
   return (
     <Router>
       <React.Suspense fallback={<PageSpinner />}>
-        {isAuthenticated ? <AuthenticatedApp /> : <UnAuthenticatedApp />}
+        {isAuthenticated ? <AuthenticatedApp /> : <UnauthenticatedApp />}
       </React.Suspense>
     </Router>
   );

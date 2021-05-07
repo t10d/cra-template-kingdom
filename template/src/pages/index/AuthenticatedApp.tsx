@@ -3,7 +3,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import routes from '../../routes/authRoutes';
 import NotFoundPage from '../NotFoundPage';
 
-function AuthApp() {
+function AuthenticatedApp() {
   return (
     <Switch>
       {routes.map((r) => (
@@ -22,4 +22,4 @@ function AuthApp() {
   );
 }
 
-export default AuthApp;
+export default AuthenticatedApp;

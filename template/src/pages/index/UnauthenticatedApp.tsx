@@ -4,7 +4,7 @@ import Login from '../Login';
 import ForgotPassword from '../ForgotPassword';
 import ResetPassword from '../ResetPassword';
 
-function UnAuthApp() {
+function UnauthenticatedApp() {
   return (
     <Switch>
       <Route path="/login" component={Login} exact />
@@ -17,4 +17,4 @@ function UnAuthApp() {
   );
 }
 
-export default UnAuthApp;
+export default UnauthenticatedApp;
