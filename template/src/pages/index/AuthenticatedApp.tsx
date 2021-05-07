@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import User from '../user/User';
-import NotFoundPage from '../NotFoundPage';
+import NotFoundPage from '../not-found/NotFound';
 
 function AuthenticatedApp() {
   return (
