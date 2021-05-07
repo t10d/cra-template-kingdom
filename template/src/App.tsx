@@ -1,19 +1,22 @@
-import { Flex, VStack } from '@chakra-ui/layout';
-import { Spinner } from '@chakra-ui/spinner';
 import * as React from 'react';
+import { Flex, VStack, Spinner } from '@chakra-ui/react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { useAuth } from './context/AuthContext';
+import { useAuth } from './contexts/AuthContext';
 
-const UnAuthenticatedApp = React.lazy(() => import('./pages/index/UnAuthApp'));
+const UnauthenticatedApp = React.lazy(
+  () => import('./pages/index/UnauthenticatedApp')
+);
 
-const AuthenticatedApp = React.lazy(() => import('./pages/index/AuthApp'));
+const AuthenticatedApp = React.lazy(
+  () => import('./pages/index/AuthenticatedApp')
+);
 
 function App() {
   const { isAuthenticated } = useAuth();
   return (
     <Router>
       <React.Suspense fallback={<PageSpinner />}>
-        {isAuthenticated ? <AuthenticatedApp /> : <UnAuthenticatedApp />}
+        {isAuthenticated ? <AuthenticatedApp /> : <UnauthenticatedApp />}
       </React.Suspense>
     </Router>
   );

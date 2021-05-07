@@ -3,8 +3,9 @@ import * as ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { ChakraProvider } from '@chakra-ui/react';
-import { AuthProvider } from './context/AuthContext';
+import { AuthProvider } from './contexts/AuthContext';
 import { makeServer } from './server';
+import theme from './styles/theme';
 
 if (process.env.NODE_ENV === 'development') {
   makeServer({ environment: 'development' });
@@ -12,7 +13,7 @@ if (process.env.NODE_ENV === 'development') {
 
 ReactDOM.render(
   <React.StrictMode>
-    <ChakraProvider>
+    <ChakraProvider theme={theme}>
       <AuthProvider>
         <App />
       </AuthProvider>
