@@ -1,12 +1,20 @@
-import { IconButton } from '@chakra-ui/button';
-import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
-import { Box, Center, Flex, Text, Link } from '@chakra-ui/layout';
-import { AxiosError, AxiosResponse } from 'axios';
 import * as React from 'react';
+import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
+import {
+  Box,
+  Center,
+  Flex,
+  Text,
+  Link,
+  Button,
+  IconButton,
+  Heading,
+} from '@chakra-ui/react';
+import { AxiosError, AxiosResponse } from 'axios';
 import { useForm } from 'react-hook-form';
-import { useParams } from 'react-router';
-import Button from '../../components/Button';
+import { useParams, Link as RouterLink } from 'react-router-dom';
 import Input from '../../components/Input/Input';
+import Layout from '../../components/Layout/Layout';
 import api from '../../services/api';
 
 type FormInputs = { password: string; confirmPassword: string };
@@ -49,33 +57,36 @@ export default function ResetPassword() {
   };
 
   return (
-    <Flex
-      h="100vh"
-      direction="column"
-      alignItems="center"
-      justifyContent="center"
-      mx="4"
-    >
+    <Layout>
+      <Heading as="h1" mb="4rem" fontSize="5xl" textAlign="center">
+        Reset your password
+      </Heading>
       <Flex
         data-testid="reset-password"
         direction="column"
         justifyContent="center"
         m={[0, 'auto']}
-        w={['auto', 'md']}
+        w={['auto', '2xl']}
         boxShadow="xl"
         p={['7', '10']}
+        bg="gray.50"
+        borderRadius="md"
       >
         <Center>
-          <Link href="/login" color="green.500" fontWeight="semibold">
+          <Link
+            as={RouterLink}
+            to="/login"
+            color="green.500"
+            fontWeight="semibold"
+          >
             Go to login
           </Link>
         </Center>
         <Center>
-          <Text fontSize="xl" fontWeight="semibold">
+          <Text fontSize="3xl" fontWeight="semibold">
             Fill the form to reset your password
           </Text>
         </Center>
-
         <form data-testid="reset-form" onSubmit={handleSubmit(submitAction)}>
           <Box mt="10">
             <Input
@@ -133,17 +144,20 @@ export default function ResetPassword() {
             />
           </Box>
           <Button
-            text="Change password"
             data-testid="submit-reset"
             disabled={!isValid}
             isLoading={isSubmitting}
             type="submit"
             w="100%"
-            mt="3"
+            mt="10"
+            p={8}
+            fontSize="2xl"
             backgroundColor="green.500"
             color="white"
             _hover={{ backgroundColor: '#276749' }}
-          />
+          >
+            Change password
+          </Button>
           {errorSubmitMessage.length > 0 ? (
             <Box mt="3" textAlign="center">
               <Text color="red.500" fontWeight="semibold">
@@ -153,6 +167,6 @@ export default function ResetPassword() {
           ) : null}
         </form>
       </Flex>
-    </Flex>
+    </Layout>
   );
 }
