@@ -2,7 +2,7 @@ import { Flex, VStack } from '@chakra-ui/layout';
 import { Spinner } from '@chakra-ui/spinner';
 import * as React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { useAuth } from './context/AuthContext';
+import { useAuth } from './contexts/AuthContext';
 
 const UnAuthenticatedApp = React.lazy(() => import('./pages/index/UnAuthApp'));
 

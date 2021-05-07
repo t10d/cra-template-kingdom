@@ -13,7 +13,7 @@ import axios, { AxiosError, AxiosResponse } from 'axios';
 import { useForm } from 'react-hook-form';
 import Input from '../../components/Input/index';
 import LoginWrapper from '../../components/LoginWrapper/index';
-import { useAuth } from '../../context/AuthContext';
+import { useAuth } from '../../contexts/AuthContext';
 import { EMAIL_REGEX } from '../../utils/constants';
 import Button from '../../components/Button';
 
