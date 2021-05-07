@@ -11,6 +11,7 @@
     "kingdom",
     "t10"
   ],
+  "readme": "README.md",
   "description": "The Kingdom template for Create React App.",
   "repository": {
     "type": "git",
