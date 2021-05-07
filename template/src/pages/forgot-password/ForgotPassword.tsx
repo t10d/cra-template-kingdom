@@ -3,7 +3,7 @@ import { AxiosError, AxiosResponse } from 'axios';
 import * as React from 'react';
 import { useForm } from 'react-hook-form';
 import Button from '../../components/Button';
-import Input from '../../components/Input';
+import Input from '../../components/Input/Input';
 import api from '../../services/api';
 import { EMAIL_REGEX } from '../../utils/constants';
 

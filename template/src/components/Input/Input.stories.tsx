@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Story, Meta } from '@storybook/react';
-import Input from './index';
+import Input from './Input';
 import { Box, Flex } from '@chakra-ui/layout';
 
 export default {

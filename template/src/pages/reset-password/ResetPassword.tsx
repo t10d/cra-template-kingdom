@@ -6,7 +6,7 @@ import * as React from 'react';
 import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router';
 import Button from '../../components/Button';
-import Input from '../../components/Input';
+import Input from '../../components/Input/Input';
 import api from '../../services/api';
 
 type FormInputs = { password: string; confirmPassword: string };

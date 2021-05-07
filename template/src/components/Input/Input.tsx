@@ -31,16 +31,18 @@ export default function Input(props: InputProps) {
   return (
     <FormControl isInvalid={!!errorMessage}>
       <InputGroup flexDirection="column">
-        <FormLabel>{label}</FormLabel>
-        <ChakraInput {...register} {...remainingProps} />
+        <FormLabel fontSize="xl">{label}</FormLabel>
+        <ChakraInput fontSize="2xl" py={8} {...register} {...remainingProps} />
         {icon ? (
-          <InputRightElement top={[8, '2rem']} right={2}>
+          <InputRightElement top="3.5rem" right={3}>
             {icon}
           </InputRightElement>
         ) : null}
         {children}
       </InputGroup>
-      <FormErrorMessage color="red.500">{errorMessage}</FormErrorMessage>
+      <FormErrorMessage fontSize="lg" color="red.500">
+        {errorMessage}
+      </FormErrorMessage>
     </FormControl>
   );
 }
