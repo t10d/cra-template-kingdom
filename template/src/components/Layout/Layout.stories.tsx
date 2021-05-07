@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { Story, Meta } from '@storybook/react';
-import LoginWrapper from './index';
+import Layout from './Layout';
 
 export default {
-  title: 'LoginWrapper',
-  component: LoginWrapper,
+  title: 'Layout',
+  component: Layout,
 } as Meta;
 
-const Template: Story<React.ComponentProps<typeof LoginWrapper>> = (args) => (
-  <LoginWrapper {...args} />
+const Template: Story<React.ComponentProps<typeof Layout>> = (args) => (
+  <Layout {...args} />
 );
 
 export const WrapperWithoutChildren = Template.bind({});

@@ -12,7 +12,7 @@ import {
 import axios, { AxiosError, AxiosResponse } from 'axios';
 import { useForm } from 'react-hook-form';
 import Input from '../../components/Input/index';
-import LoginWrapper from '../../components/LoginWrapper/index';
+import Layout from '../../components/Layout/Layout';
 import { useAuth } from '../../contexts/AuthContext';
 import { EMAIL_REGEX } from '../../utils/constants';
 import Button from '../../components/Button';
@@ -53,7 +53,7 @@ export default function Login() {
     setIsPasswordVisible((prevState) => !prevState);
 
   return (
-    <LoginWrapper>
+    <Layout>
       <Flex
         data-testid="login"
         direction="column"
@@ -140,6 +140,6 @@ export default function Login() {
           ) : null}
         </form>
       </Flex>
-    </LoginWrapper>
+    </Layout>
   );
 }
