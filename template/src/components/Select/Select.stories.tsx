@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Story, Meta } from '@storybook/react';
-import Select from './index';
+import Select from './Select';
 import { Box, Flex } from '@chakra-ui/layout';
 import { ArrowDownIcon } from '@chakra-ui/icons';
 
