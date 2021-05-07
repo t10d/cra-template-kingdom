@@ -1,21 +1,23 @@
 import * as React from 'react';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
+import { Link as RouterLink } from 'react-router-dom';
 import {
   Box,
+  Button,
   Center,
-  Checkbox,
   Flex,
+  Heading,
   IconButton,
   Link,
   Text,
 } from '@chakra-ui/react';
-import axios, { AxiosError, AxiosResponse } from 'axios';
+import { AxiosError, AxiosResponse } from 'axios';
 import { useForm } from 'react-hook-form';
-import Input from '../../components/Input/index';
+import Input from '../../components/Input/Input';
 import Layout from '../../components/Layout/Layout';
 import { useAuth } from '../../contexts/AuthContext';
 import { EMAIL_REGEX } from '../../utils/constants';
-import Button from '../../components/Button';
+import api from '../../services/api';
 
 type FormInputs = {
   email: string;
@@ -35,8 +37,8 @@ export default function Login() {
   const { authenticate } = useAuth();
 
   const submitAction = ({ email, password }: FormInputs) => {
-    axios
-      .post('/api/login', { username: email, password })
+    api
+      .post('/login', { username: email, password })
       .then(({ data: { token } }: AxiosResponse<{ token: string }>) => {
         authenticate({ token });
       })
@@ -54,16 +56,21 @@ export default function Login() {
 
   return (
     <Layout>
+      <Heading as="h1" mb="4rem" fontSize="5xl" textAlign="center">
+        Sign in to your account
+      </Heading>
       <Flex
         data-testid="login"
         direction="column"
         justifyContent="center"
-        w={['auto', 'md']}
+        w={['auto', '2xl']}
         boxShadow="xl"
         p={['7', '10']}
+        bg="gray.50"
+        borderRadius="md"
       >
         <Center>
-          <Text fontSize="xl" fontWeight="semibold">
+          <Text fontSize="3xl" fontWeight="semibold">
             Fill the fields below to login
           </Text>
         </Center>
@@ -84,7 +91,7 @@ export default function Login() {
               })}
             />
           </Box>
-          <Box mt="5">
+          <Box mt="10">
             <Input
               type={isPasswordVisible ? 'text' : 'password'}
               aria-label="password"
@@ -96,7 +103,7 @@ export default function Login() {
                 required: 'Password must be provided.',
                 minLength: {
                   value: 7,
-                  message: 'The password must have at leat 7 characters.',
+                  message: 'The password must have at least 7 characters.',
                 },
               })}
               icon={
@@ -113,24 +120,30 @@ export default function Login() {
               }
             />
           </Box>
-          <Flex mt="2" mb="10" justifyContent="space-between">
-            <Checkbox colorScheme="green">Remember me</Checkbox>
-            <Link href="/forgot-password" color="green.500">
+          <Text mt="4" mb="10" fontSize="lg" justifyContent="space-between">
+            <Link
+              as={RouterLink}
+              to="/forgot-password"
+              fontSize="xl"
+              color="green.500"
+            >
               Forgot my password
             </Link>
-          </Flex>
+          </Text>
           <Button
-            text="Login"
             data-testid="submit-login"
             disabled={!isValid}
             isLoading={isSubmitting}
             type="submit"
             w="100%"
-            mt="0"
+            p={8}
+            fontSize="2xl"
             backgroundColor="green.500"
             color="white"
             _hover={{ backgroundColor: '#276749' }}
-          />
+          >
+            Login
+          </Button>
           {errorSubmitMessage.length > 0 ? (
             <Box mt="3" textAlign="center">
               <Text color="red.500" fontWeight="semibold">
