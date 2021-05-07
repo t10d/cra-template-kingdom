@@ -2,8 +2,8 @@ import * as React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import * as RTL from '@testing-library/react';
 import { ChakraProvider } from '@chakra-ui/react';
-import theme from '../../../test/src/styles/theme';
-import { AuthProvider } from '../../../test/src/context/AuthContext';
+import theme from '../styles/theme';
+import { AuthProvider } from '../contexts/AuthContext';
 
 type RenderWithRouterOptions = {
   route?: string;
